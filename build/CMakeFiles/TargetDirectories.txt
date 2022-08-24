@@ -1,0 +1,6 @@
+/home/benkrisna/Projects/game/build/CMakeFiles/rebuild_cache.dir
+/home/benkrisna/Projects/game/build/CMakeFiles/edit_cache.dir
+/home/benkrisna/Projects/game/build/CMakeFiles/main.dir
+/home/benkrisna/Projects/game/build/WINDOW/CMakeFiles/rebuild_cache.dir
+/home/benkrisna/Projects/game/build/WINDOW/CMakeFiles/edit_cache.dir
+/home/benkrisna/Projects/game/build/WINDOW/CMakeFiles/WINDOW.dir
