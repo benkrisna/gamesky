@@ -4,7 +4,16 @@
 
 
 void displayMe() {
-  glClear(GL_COLOR_BUFFER_BIT);
+  float angle = 0.0f;
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  glLoadIdentity();
+
+  gluLookAt( 0.0f, 0.0f, 10.0f,
+             0.0f, 0.0f, 0.0f,
+             0.0f, 1.0f, 0.0f);
+
+  glRotatef(angle, 0.0f, 1.0f, 0.0f);
   /*
   glBegin(GL_POLYGON);
     glColor3f(1, 0, 0); glVertex3f(0.5, 0.0, 0.5);
@@ -22,9 +31,34 @@ void displayMe() {
       glColor3f(rand() % 2, rand() % 2, rand() % 2); glRectf(-xmax + dx * i, -ymax + dx * j, -xmax + dx * (i + 1), -ymax + dx * (j + 1));
     }
   }
+  
+  angle += 0.01f;
 
   // Flush drawing command buffer to make drawing happen ASAP
-  glFlush();
+  // glFlush();
+  glutSwapBuffers();
+}
+
+void changeSize(int w, int h) {
+  // In cases the height is 0, set it to 1
+  if (h == 0) {
+    h = 1;
+  }
+
+  float ratio = 1.0 * w / h;
+
+  // Set current matrix to be the projection matrix
+  glMatrixMode(GL_PROJECTION);
+
+  // Load identity matrix
+  glLoadIdentity();
+  
+  // Setting the viewport to be the whole window
+  glViewport(0, 0, w, h);
+
+  gluPerspective(45, ratio, 1, 1000);
+
+  glMatrixMode(GL_MODELVIEW);
 }
 
 void createInitWindow(const int N) {
@@ -34,4 +68,8 @@ void createInitWindow(const int N) {
   glutCreateWindow("Hello World!");
 
   glutDisplayFunc(displayMe);
+
+  glutReshapeFunc(changeSize);
+
+  glutIdleFunc(displayMe);
 }

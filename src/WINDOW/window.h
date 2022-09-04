@@ -3,6 +3,7 @@
 static int Ngrid;
 
 void displayMe();
+void changeSize(int w, int h);
 void createInitWindow(const int N);
 
 #endif
